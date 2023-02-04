@@ -33,18 +33,22 @@
         input[type="text"]:active {
             transform: scale(0.95); /* Reduce size on click */
         }
-        #countdown {
-            margin-top: 20px;
-            font-size: 20px;
-        }
     </style>
 </head>
 <body>
+    
     <h2>Enter a color:</h2> 
     <div>
         <input type="text" id="color" onkeyup="myFunction()">
     </div>
-    <p id="countdown"></p>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="https://twitter.com/timotheuswiese" target="_blank">
+          Made with love <span style="color: #9b59b6;">&#9829;</span> by Timo
+        </a>
+      </div>
+      
+
     <script>
         let lastActivity = new Date().getTime();
         let intervalId = setInterval(function(){
@@ -57,30 +61,18 @@
                 document.getElementById("color").value = "";
             }
         }, 1000);
-
         document.onmousemove = function() {
-            lastActivity = new Date().getTime();
-        };
-        document.onkeypress = function() {
-            lastActivity = new Date().getTime();
-        };
-        
-        function myFunction() {
-            let x = document.getElementById("color");
-            document.body.style.backgroundColor = x.value;
-            lastActivity = new Date().getTime();
-        }
-      
-  let countDownDate = new Date().getTime() + 10000;
-  let x = setInterval(function () {
-    let now = new Date().getTime();
-    let distance = countDownDate - now;
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("timer").innerHTML = "EXPIRED";
+        lastActivity = new Date().getTime();
+    };
+    document.onkeypress = function() {
+        lastActivity = new Date().getTime();
+    };
+    
+    function myFunction() {
+        let x = document.getElementById("color");
+        document.body.style.backgroundColor = x.value;
+        lastActivity = new Date().getTime();
     }
-  }, 1000);
 </script>
+</body>
+</html>
