@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh;
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="text"] {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: white; /* White background */
+            color: black; /* Black text */
+            border: 2px solid gray; /* Add border */
+            cursor: pointer; /* Add cursor on hover */
+            transition: background-color 0.3s ease, border-color 0.3s ease; /* Add transition on hover */
+            border-radius: 25px;
+        }
+        input[type="text"]:hover {
+            border-color: black;
+        }
+        input[type="text"]:active {
+            transform: scale(0.95); /* Reduce size on click */
+        }
+        #countdown {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enter a color:</h2> 
+    <div>
+        <input type="text" id="color" onkeyup="myFunction()">
+    </div>
+    <p id="countdown"></p>
+    <script>
+        let lastActivity = new Date().getTime();
+        let intervalId = setInterval(function(){
+            let currentTime = new Date().getTime();
+            if(currentTime - lastActivity >= 10000){
+                let colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "gray", "black", "white"];
+                let randomColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.style.transition = "background-color 1s ease";
+                document.body.style.backgroundColor = randomColor;
+                document.getElementById("color").value = "";
+            }
+        }, 1000);
+
+        document.onmousemove = function() {
+            lastActivity = new Date().getTime();
+        };
+        document.onkeypress = function() {
+            lastActivity = new Date().getTime();
+        };
+        
+        function myFunction() {
+            let x = document.getElementById("color");
+            document.body.style.backgroundColor = x.value;
+            lastActivity = new Date().getTime();
+        }
+      
+  let countDownDate = new Date().getTime() + 10000;
+  let x = setInterval(function () {
+    let now = new Date().getTime();
+    let distance = countDownDate - now;
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("timer").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+</script>
