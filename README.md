@@ -7,4 +7,4 @@ Nothing interesting.
 Bye bye!
 
 
-[You can visit the site here](https://playground.timotheuswiese.de)
+[You can view the html sites here](https://playground.timotheuswiese.de)
